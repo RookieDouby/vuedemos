@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <script src="http://cdn.bootcss.com/vue/1.0.15/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Age</td>
+                    <td>Gender</td>
+                </tr>
+                <tbody>
+                    <tr v-for="person in persons">
+                        <td>{{ person.name }}</td>
+                        <td>{{ person.age }}</td>
+                        <td>{{ person.gender }}</td>
+                    </tr>
+                </tbody>
+            </thead>
+        </table>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data: {
+                persons:[{
+                    name:'Jack',
+                    age: 12,
+                    gender:'male',
+                },{
+                    name: 'Sam',
+                    age: 13,
+                    gender:'Female'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
