@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind和v-on的缩写</title>
+    <script src="http://cdn.bootcss.com/vue/1.0.15/vue.js"></script>
+</head>
+<body>
+    <div>
+        <a href="javascript:void(0)" v-bind:class="activeNumber === n + 1 ? 'active':'' ">{{ n+1 }}</a>
+        <!-- 缩写语法 -->
+        <a href="javascript:void(0)":class="activeNumber === n + 1 ? 'active': '' ">{{ n + 1 }}</a>
+
+        <button v-on:click = "greet"></button>
+        <button @click="greet"></button>
+    </div>
+</body>
+</html>

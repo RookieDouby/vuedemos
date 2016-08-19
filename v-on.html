@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on demo</title>
+    <script src="http://cdn.bootcss.com/vue/1.0.15/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p><input type="text" v-model="message"></p>
+        <p>
+            <button v-on:click="greet">Greet</button>
+        </p>
+        <p>
+            <button v-on:click="say('Hi')">Hi</button>
+        </p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello,Vue.js!'
+            },
+            methods: {
+                greet: function () {
+                    alert(this.message);
+                },
+                say: function (msg) {
+                    alert(msg);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
