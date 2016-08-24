@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渲染列表</title>
+    <script src="http://cdn.bootcss.com/vue/1.0.15/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data : {
+                todos : []
+            }
+        });
+    </script>
+</body>
+</html>

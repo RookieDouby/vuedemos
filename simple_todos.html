@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Todos Example</title>
+    <script src="http://cdn.bootcss.com/vue/1.0.15/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-on:keyup.enter ="addTodo" v-model="newTodo">
+        <ul v-for="todo in todoList">
+            <li>
+                <span>{{ todo.text }}</span>
+                <button v-on:click="deleteTodo($index)">X</button>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : '#app',
+            data : {
+                newTodo : '',
+                todoList : [
+                    {text : 'Add some todos'}
+                ]
+            },
+            methods : {
+                addTodo : function () {
+                    var text = this.newTodo.trim();
+                    if(text) {
+                        this.todoList.push({text : text});
+                        this.newTodo = '';
+                    }
+                },
+                deleteTodo : function(index) {
+                    this.todoList.splice(index,1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

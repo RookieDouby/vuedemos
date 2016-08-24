@@ -81,11 +81,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manage_namelist/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
+            <state relative-caret-position="570">
+              <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+              <folding>
+                <marker date="1471604844000" expanded="true" signature="31:2632" placeholder="..." />
+                <marker date="1471604844000" expanded="true" signature="175:2624" placeholder="..." />
+                <marker date="1471604844000" expanded="true" signature="261:387" placeholder="..." />
+                <marker date="1471604844000" expanded="true" signature="405:529" placeholder="..." />
+                <marker date="1471604844000" expanded="true" signature="547:812" placeholder="..." />
+                <marker date="1471604844000" expanded="true" signature="653:793" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="renderList.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/renderList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -113,6 +130,7 @@
         <option value="$PROJECT_DIR$/v-on.html" />
         <option value="$PROJECT_DIR$/v-bind.html" />
         <option value="$PROJECT_DIR$/manage_namelist/index.html" />
+        <option value="$PROJECT_DIR$/renderList.html" />
       </list>
     </option>
   </component>
@@ -167,20 +185,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="vue" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vue" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manage_namelist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -265,12 +269,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1471368705330</updated>
-      <workItem from="1471368706661" duration="11664000" />
+      <workItem from="1471368706661" duration="13927000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11664000" />
+    <option name="totallyTimeSpent" value="13927000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -360,8 +364,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manage_namelist/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
+        <state relative-caret-position="570">
+          <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+          <folding>
+            <marker date="1471604844000" expanded="true" signature="31:2632" placeholder="..." />
+            <marker date="1471604844000" expanded="true" signature="175:2624" placeholder="..." />
+            <marker date="1471604844000" expanded="true" signature="261:387" placeholder="..." />
+            <marker date="1471604844000" expanded="true" signature="405:529" placeholder="..." />
+            <marker date="1471604844000" expanded="true" signature="547:812" placeholder="..." />
+            <marker date="1471604844000" expanded="true" signature="653:793" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/renderList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
           <folding />
         </state>
       </provider>

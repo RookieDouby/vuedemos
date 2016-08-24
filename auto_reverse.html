@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自动反转输入</title>
+    <script src="http://cdn.bootcss.com/vue/1.0.15/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{ message.split('').reverse().join('') }} </p>
+        <input type="text" v-model="message">
+    </div>
+    <script>
+        data = {
+            message : 'Hello Sam!'
+        };
+        var vm = new Vue({
+            el : '#app',
+            data : data
+        });
+    </script>
+</body>
+</html>
