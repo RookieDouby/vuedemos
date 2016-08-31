@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template Example</title>
+    <script src="http://cdn.bootcss.com/vue/1.0.15/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child-tmp :say-hi="greeting"></child-tmp>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data: {
+                greeting: 'Hi '
+            },
+            components: {
+                'child-tmp':{
+                    props: ['sayHi'],
+                    data: function () {
+                        return {name:'Sam'}
+                    },
+                    template: '<div>{{ sayHi }},{{ name }}</div>'
+                }
+            }
+        });
+    </script>
+</body>
+</html>

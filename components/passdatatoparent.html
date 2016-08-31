@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pass data from children to parent Node</title>
+        <script type="text/javascript" src="http://cdn.bootcss.com/vue/1.0.15/vue.js">
+        </script>
+    </head>
+    <body>
+        <div id="event-example">
+            <p>
+                Message: {{ message | json }}
+            </p>
+            <child-tmp></child-tmp>
+        </div>
+
+        <template id="child-template">
+            <input type="text" name="name" value="" v-model="msg">
+            <button type="button" name="button" @click="notify">Dispatch Child Msg</button>
+        </template>
+        <script type="text/javascript">
+            // Vue.component('childTmp',{
+            //     template: '#child-template',
+            //     data: function() {
+            //         return {msg:'Hi Sam!'};
+            //     },
+            //     methods: {
+            //         notify: function() {
+            //             if(this.msg.trim()) {
+            //                 this.$dispatch('child-msg',this.msg);
+            //                 this.msg='';
+            //             }
+            //         }
+            //     }
+            // });
+            //
+            // var parent = new Vue({
+            //     el: '#event-example',
+            //     data: {
+            //         message: []
+            //     },
+            //     //events 选项简单调用$on
+            //     events: {
+            //         'child-msg': function(msg) {
+            //             this.message.push(msg);
+            //         }
+            //     }
+            // });
+
+            var parent = new Vue({
+                el:'#event-example',
+                data: {
+                    message: []
+                },
+                components: {
+                    'child-tmp':{
+                        template: '#child-template',
+                        data: function() {
+                            return {msg:"Hi ZHD!"}
+                        },
+                        methods: {
+                            notify: function() {
+                                if(this.msg.trim()) {
+                                    this.$dispatch('child-msg',this.msg);
+                                    this.msg='';
+                                }
+                            }
+                        }
+                    }
+                },
+                events: {
+                    'child-msg': function(msg) {
+                        this.data.push(msg);
+                    }
+                }
+            });
+
+            function formatComma(n,display0) {
+                if(!n) {
+                    if(display0 && n===0){
+                        return 0;
+                    }
+                    return '-';
+                }else {
+                    return n.toString().replace(/\B(?=(\d{3})+(?!\d)/g,',');
+                }
+            }
+        </script>
+    </body>
+</html>
