@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bind data with component</title>
+    <script src="http://cdn.bootcss.com/vue/2.0.3/vue.min.js">
+    </script>
+</head>
+<body>
+    <div id="todo-list-example">
+        <input 
+            v-model="newTodoText"
+            @keyup.enter="addNewTab"
+         />
+        <ul>
+            <li
+                is="todo-item"
+                v-for="(todo,index) in todoList"
+                v-bind:templatedata="todo"
+                @remove="todoList.splice(index,1)"
+            >
+            </li>
+        </ul>
+    </div>
+    <script>
+        //cannot use templateData as variable.must be a lowercase variable 
+        Vue.component('todo-item',{
+            props:['templatedata'],
+            template: '\
+                <li v-bind:title="templatedata.title">\
+                    {{ templatedata.content }}\
+                    <button @click="$emit(\'remove\')">X</button>\
+                </li>\
+            '
+        });
+        var vm = new Vue({
+            el: '#todo-list-example',
+            data: {
+                newTodoText:'',
+                todoList: [
+                    {
+                        title:'1st',
+                        content: 'Learn Javascript'
+                    },
+                    {
+                        title: '2nd',
+                        content:'Learn vue'
+                    },
+                    {
+                        title: '3rd',
+                        content:'Learn css3'
+                    }
+                ]
+            },
+            methods: {
+                addNewTab:function() {
+                    var newTodoObject = {};
+                    newTodoObject.title = this.todoList.length + 1 + 'th';
+                    newTodoObject.content = this.newTodoText.trim();
+                    if(newTodoObject.content) {
+                        this.todoList.push(newTodoObject);
+                    }
+                    this.newTodoText = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
