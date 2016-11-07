@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bind data with component</title>
+    <script src="http://cdn.bootcss.com/vue/2.0.3/vue.min.js">
+    </script>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+    <template id="myComponent">
+        <div>This is content of template tag</div>
+    </template>
+    <script>
+        //use template tag to create a template
+        Vue.component('my-component',{
+            template: '#myComponent'
+        });
+
+        var vm  = new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+</html>

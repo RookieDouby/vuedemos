@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bind data with component</title>
+    <script src="http://cdn.bootcss.com/vue/2.0.3/vue.min.js">
+    </script>
+</head>
+<body>
+    <div id="app">
+        <div id="searchBar">
+            Search <input type="text" v-model="searchQuery">
+        </div>
+        <simple-grid :data="gridData" :columns="gridColumns" :filter-key="searchQuery"></simple-grid>
+    </div>
+    <template id="#gridTemplate">
+        <table>
+            <thead>
+                <tr>
+                    <th v-for="col in columns">
+                        {{ col | calpitalize }}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="entry in data | filterBy filterKey">
+                    <td v-for="col in columns">
+                        {{ entry[col] }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
+    <script>
+        Vue.component('simple-grid',{
+            tempalte: '#gridTemplate',
+            props: {
+                data: Array,
+                columns: Array,
+                filterKey: String
+            }
+        });
+
+        var vm = new Vue({
+            el:'#app',
+            data: {
+                searchQuery: '',
+                gridColumns: ['name','age','sex'],
+                gridData: [{
+                    name: 'Jack',
+                    age: 20,
+                    sex: 'male'
+                }, {
+                    name: 'Ezerial',
+                    age: 21,
+                    sex: 'male'
+                },{
+                    name: "Lucy",
+                    age: 22,
+                    sex: 'female'
+                },{
+                    name: 'Lily',
+                    age: 23,
+                    sex: 'female'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

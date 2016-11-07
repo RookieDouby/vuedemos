@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bind data with component</title>
+    <script src="http://cdn.bootcss.com/vue/2.0.3/vue.min.js">
+    </script>
+</head>
+<body>
+    <div id="app">
+        <parent-component></parent-component>
+    </div>
+    <script>
+        var childComponent = Vue.extend({
+            template: '<p>This is child component content!</p>'
+        });
+        
+        var parentComponent = Vue.extend({
+            template: '<h1>This is parent component content! </h1> <child-component></child-component>',
+            components: {
+                'child-component': childComponent                    
+            }
+        });
+
+        Vue.component('parent-component', parentComponent);
+
+        var vm = new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+</html>
