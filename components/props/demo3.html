@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Bind data with component</title>
-    <script src="../../javascript/vue.js">
-    </script>
+    <script src="../../javascript/vue1.js"></script>
 </head>
 <body>
     <div id="app">
         <div id="searchBar">
             Search <input type="text" v-model="searchQuery">
         </div>
-        <simple-grid :data="gridData" :columns="gridColumns" :filter-key="searchQuery"></simple-grid>
+            <simple-grid :grid-columns="gridColumns" :grid-data="gridData" :filter-key="searchQuery"></simple-grid>
     </div>
-    <template id="#gridTemplate">
+    <template id="gridTemplate">
         <table>
             <thead>
                 <tr>
-                    <th v-for="col in columns">
-                        {{ col | calpitalize }}
+                    <th v-for="gridColumn in gridColumns">
+                        {{ gridColumn | capitalize }}
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="entry in data | filterBy filterKey">
-                    <td v-for="col in columns">
-                        {{ entry[col] }}
+                <tr v-for="data in gridData | filterBy filterKey">
+                    <td v-for="gridColumn in gridColumns">
+                        {{ data[gridColumn] }}
                     </td>
                 </tr>
             </tbody>
@@ -33,34 +32,34 @@
     </template>
     <script>
         Vue.component('simple-grid',{
-            tempalte: '#gridTemplate',
+            template: '#gridTemplate',
             props: {
-                data: Array,
-                columns: Array,
+                gridColumns : Array, // props verify
+                gridData : Array,
                 filterKey: String
             }
         });
 
         var vm = new Vue({
-            el:'#app',
+            el: '#app',
             data: {
                 searchQuery: '',
                 gridColumns: ['name','age','sex'],
                 gridData: [{
-                    name: 'Jack',
-                    age: 20,
-                    sex: 'male'
-                }, {
-                    name: 'Ezerial',
-                    age: 21,
-                    sex: 'male'
+                    name: 'Sam',
+                    age: 23,
+                    sex:'male'
                 },{
-                    name: "Lucy",
-                    age: 22,
+                    name: 'Lucy',
+                    age: 24,
                     sex: 'female'
                 },{
-                    name: 'Lily',
-                    age: 23,
+                    name: 'Nazi',
+                    age: 25,
+                    sex: 'male'
+                },{
+                    name: 'Jimy',
+                    age: 26,
                     sex: 'female'
                 }]
             }
