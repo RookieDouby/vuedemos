@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot Demo 01</title>
+    <script src="../../javascript/vue1.js">
+    </script>
+</head>
+<body>
+    <div id="app">
+        <parent-component></parent-component>
+    </div>
+
+    <template id="parentComponent">
+        <child-component1 v-ref:cc1></child-component1>
+        <child-component2 v-ref:cc2></child-component2>        
+        <button @click="ShowChildComponentData">Show child component data</button>
+    </template>
+
+    <template id="childComponent1">
+        <h2>This is child component 1</h2>
+    </template>
+
+    <template id="childComponent2">
+        <h2>This is child component 2</h2>
+    </template>
+
+    <script>
+        // this.$children  is an array like object
+        // only work under vue 1.x version
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                'parent-component': {
+                    template: '#parengComponent',
+                    components: {
+                        'child-component1': {
+                            template: '#childComponent1',
+                            data: function() {
+                                return {
+                                    msg: 'This is child component 1'
+                                }
+                            }
+                        },
+                        'child-component2': {
+                            template: '#childComponent2',
+                            data: function() {
+                                return {
+                                    msg: 'This is child component 2'
+                                }
+                            }
+                        }
+                    },
+                    methods: {
+                        ShowChildComponentData: function() {
+                            alert(this.$refs.cc1.msg);
+                            alert(this.$refs.cc2.msg);                            
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

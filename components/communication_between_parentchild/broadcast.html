@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot Demo 01</title>
+    <script src="../../javascript/vue1.js">
+    </script>
+</head>
+<body>
+    <div id="app">
+        Parent Content 
+        <input v-model="msg" @keyup.enter="notify">
+        <button @click="notify">Broadcast Event</button>
+        <child-component></child-component>
+    </div>
+    
+    <template id="childComponent">
+        <ul>
+            <li v-for="message in messages">Parent component has edited infomation: {{ message }}</li>
+        </ul>
+    </template>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: ''
+            },
+            methods: {
+                notify: function() {
+                    if(this.msg.trim()) {
+                        this.$broadcast('parent-msg',this.msg);
+                    }
+                }
+            },
+            components: {
+                'child-component': {
+                    template: '#childComponent',
+                    data: function() {
+                        return {
+                            messages: []
+                        }
+                    },
+                    events: {
+                        'parent-msg': function(str) {
+                            this.messages.push(str)
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+    </style>
+</body>
+</html>
