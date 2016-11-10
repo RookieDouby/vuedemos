@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD 综合实例</title>
+    <script src="../../javascript/vue1.js"></script>
+    <style>
+        #app {
+            width: 600px;
+            margin: 0 auto;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        table thead{
+            background-color: #afc !important;
+        }
+        table, td, th {
+            border: 1px solid #ddd;
+        }
+        table tbody tr:nth-child(2n) {
+            background-color: #ccc;
+        }
+        table thead th {
+            padding:10px 50px; 
+        }
+        table tbody td {
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="form-group">
+                <label>Search</label>
+                <input type="text" class="search-input" v-model="searchQuery">
+            </div>
+        </div>
+        <div class="container">
+            <grid-template :search-key="searchQuery" :template-titles="titles" :template-infolist="infolist"></grid-template>
+        </div>
+    </div>        
+
+    <template id="gridTemplate">
+        <table>
+            <thead>
+                <tr>
+                    <th v-for="title in templateTitles">{{ title.name | capitalize }}</th>
+                    <th>Delete</th>                        
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(index,person) in templateInfolist | filterBy searchKey">
+                    <td v-for="title in templateTitles">{{ person[title.name] }}</td>
+                    <td class="text-center">
+                        <button @click="delteItem(index)">delete</button>    
+                    </td>                        
+                </tr>
+            </tbody>
+        </table>
+        <modal-dialog :mode="mode" :title="title" :fields="templateTitles" :item="item">
+        </modal-dialog>
+    </template>
+
+    <!--2.创建对话框组件-->
+    <template id="dialogTemplate"> 
+        <div class="dialogs" v-show="show">
+            <div class="dialog">
+                <div class="dialog-content">
+                    <div class="dialog-header">
+                        <h1 class="dialog-title">{{ title }}</h1>
+                    </div>
+                    <div class="dialog-footer">
+                        <div class="form-group">
+                            <label for=""></label>
+                            <button @click="save">Save</button>
+                            <button @click="close">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dialog-overlay"></div>
+        </div>
+    </template>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                searchQuery: '',
+                titles: [{
+                    name: 'name'
+                },{
+                    name:'age'
+                },{
+                    name: 'gender'
+                }],
+                infolist: [{
+                    name: 'Jack',
+                    age: 22,
+                    gender: 'Male'
+                },{
+                    name: 'Sam',
+                    age: 23,
+                    gender: 'Male'
+                },{
+                    name: 'Lucy',
+                    age: 24,
+                    gender: 'Female'
+                },{
+                    name: 'Clair',
+                    age: 25,
+                    gender: 'Female'
+                }]
+            },
+            components: {
+                'grid-template': {
+                    template: '#gridTemplate',
+                    props: ['searchKey','templateTitles','templateInfolist'],
+                    methods: {
+                        delteItem: function(index) {
+                            this.templateInfolist.splice(index, 1);
+                        },
+                    },
+                    data: function() {
+                        return {
+                            mode: 0,//mode=1新增数据模式，mode=2修改数据模式
+                            item: {},//有simple-grid传下来，用来绑定表单字段
+                            title: ''//对话框标题内容,
+                        }
+                    },
+                    components: {
+                        'modal-dialog': {
+                            template: '#dialogTemplate',
+                            data: function() {
+                                return {
+                                    //对话框默认不显示
+                                    show: false
+                                }
+                            },
+                            props: ['mode','title','item','fields'],
+                            methods: {
+                                close: function() {
+                                    this.show = false;
+                                },
+                                save: function() {
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }); 
+
+        //1. 创建表格组件，添加查询和删除功能
+        //2. 创建对话框组件.
+    </script>
+</body>
+</html>
