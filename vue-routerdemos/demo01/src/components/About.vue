@@ -10,3 +10,9 @@
         
     }
 </script>
+
+<style lang="sass">
+    h1 {
+        color:green;
+    }
+</style>

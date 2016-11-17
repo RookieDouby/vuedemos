@@ -25,8 +25,6 @@
     </div>
 </template>
 
-<style>
-    body {
-        background-color:#ccc;
-    }
+<style lang="sass">
+    @import "./css/App.scss";
 </style>
